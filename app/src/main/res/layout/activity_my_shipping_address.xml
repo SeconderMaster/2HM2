@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lmj.a2hm2.My.My_shippingAddress">
+    <RelativeLayout
+        android:id="@+id/tb_my_shipping_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:id="@+id/ic_tb_my_shipping_address_back"
+            android:layout_width="wrap_content"
+            android:textColor="#383838"
+            android:text="@string/ic_search_back"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="选择地址"/>
+    </RelativeLayout>//TB
+    <android.support.v7.widget.RecyclerView
+        android:background="#ffffff"
+        android:layout_below="@+id/tb_my_shipping_address"
+        android:id="@+id/my_shipping_address_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:background="#ff5500"
+        android:id="@+id/add_my_shipping_address"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        android:text="新增收货地址"/>
+</RelativeLayout>

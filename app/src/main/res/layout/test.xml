@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/community_discovery_item_userHead"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/user_head"/>
+    <TextView
+        android:id="@+id/community_discovery_item_userName"
+        android:layout_toRightOf="@+id/community_discovery_item_userHead"
+        android:textColor="#333333"
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="我喜欢"/>
+    <TextView
+        android:layout_alignBottom="@+id/community_discovery_item_userHead"
+        android:layout_toRightOf="@+id/community_discovery_item_userHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4小时前"/>
+</RelativeLayout>
