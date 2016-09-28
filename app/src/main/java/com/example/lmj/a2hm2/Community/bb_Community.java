@@ -38,6 +38,7 @@ public class bb_Community extends Fragment{
         ic_community_add = inflater.inflate(R.layout.community_fragment, container, false);
         initview();
         initgetdata();
+        System.out.println("啊喀喀喀");
         return ic_community_add;
 
 
