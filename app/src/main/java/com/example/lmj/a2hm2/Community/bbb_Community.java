@@ -41,6 +41,12 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
         return community_fragment;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+    }
+
     private void initView() {
         tb_comment_discovery= (RelativeLayout) community_fragment.findViewById(R.id.tb_comment_discovery);
         tb_comment_my= (RelativeLayout) community_fragment.findViewById(R.id.tb_comment_my);

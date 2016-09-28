@@ -38,12 +38,10 @@ public class bb_Community extends Fragment{
         ic_community_add = inflater.inflate(R.layout.community_fragment, container, false);
         initview();
         initgetdata();
-        System.out.println("啊喀喀喀");
         return ic_community_add;
 
 
     }
-
     private void initgetdata() {
         new getdate().execute();
 
@@ -54,8 +52,8 @@ public class bb_Community extends Fragment{
     private void initview() {
         community_view= (RecyclerView) ic_community_add.findViewById(R.id.lv_community);
         Typeface iconfont = Typeface.createFromAsset(getActivity().getAssets(), "ic_community_add/iconfont.ttf");
-
-
+        community_view.setLayoutManager(new LinearLayoutManager(getActivity()));
+        community_view.setAdapter(madapter=new CommunityArticleAdapter(getActivity(),marticle));
     }
     class getdate extends AsyncTask<Void,Void,Void> {
 
@@ -84,8 +82,7 @@ public class bb_Community extends Fragment{
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            community_view.setLayoutManager(new LinearLayoutManager(getActivity()));
-            community_view.setAdapter(madapter=new CommunityArticleAdapter(getActivity(),marticle));
+           madapter.notifyDataSetChanged();
         }
     }
 }
