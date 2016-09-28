@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#ffffff"
     android:padding="10dp"
+    android:layout_marginBottom="15dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
@@ -18,9 +19,67 @@
         android:layout_height="wrap_content"
         android:text="我喜欢"/>
     <TextView
+        android:id="@+id/community_discovery_item_time"
         android:layout_alignBottom="@+id/community_discovery_item_userHead"
         android:layout_toRightOf="@+id/community_discovery_item_userHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="4小时前"/>
+    <HorizontalScrollView
+        android:id="@+id/community_discovery_item_imageHorizontalScrollView"
+        android:layout_below="@+id/community_discovery_item_userHead"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </GridView>
+    </HorizontalScrollView>
+    <TextView
+        android:id="@+id/community_discovery_item_content"
+        android:layout_below="@+id/community_discovery_item_imageHorizontalScrollView"
+        android:text="水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 "
+        android:textColor="#333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_below="@+id/community_discovery_item_content"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <View
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#eeeeee"/>
+        <TextView
+            android:id="@+id/community_discovery_item_position"
+            android:textColor="#57b6e2"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/ic_position"
+            android:text="来自福建厦门市"/>
+        <TextView
+            android:id="@+id/community_discovery_item_thumb_up_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:textColor="#333333"
+            android:drawableLeft="@drawable/ic_thumb_up" />
+
+        <TextView
+            android:id="@+id/community_discovery_item__comments_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:textSize="16dp"
+            android:textColor="#333333"
+            android:layout_toLeftOf="@id/community_discovery_item_thumb_up_num"
+            android:drawableLeft="@drawable/ic_comments" />
+    </RelativeLayout>
 </RelativeLayout>

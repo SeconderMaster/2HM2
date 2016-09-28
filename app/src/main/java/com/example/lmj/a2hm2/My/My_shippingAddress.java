@@ -58,8 +58,8 @@ public class My_shippingAddress extends AppCompatActivity implements View.OnClic
         ic_tb_my_shipping_address_back.setTypeface(iconfont1);
         iconfont2 = Typeface.createFromAsset(getAssets(), "ic_my_shipping_address/iconfont.ttf");
 //        ic_tb_SMS_login_back.setTypeface(iconfont2);
-        my_shipping_address_recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        my_shipping_address_recyclerView.setAdapter(shippingAdapter=new ShippingAdapter(getApplicationContext(),shippingAddressArrayList));
+//        my_shipping_address_recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        my_shipping_address_recyclerView.setAdapter(shippingAdapter=new ShippingAdapter(getApplicationContext(),shippingAddressArrayList));
         BmobQuery<Shipping_address> query=new BmobQuery<Shipping_address>();
         query.addWhereEqualTo("userID",getCurrentUserID.getCurrentUserID());
         query.findObjects(new FindListener<Shipping_address>() {

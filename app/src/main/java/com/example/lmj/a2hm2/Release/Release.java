@@ -108,14 +108,14 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         mReleaseBean.setGoodS_title(mGoods_title.getText().toString());
         mReleaseBean.setGoods_des(mGoods_des.getText().toString());
         mReleaseBean.setGoods_pri(mGoods_pri.getText().toString());
-        mReleaseBean.setGoods_classify(ic_release_classify.toString());
+        mReleaseBean.setGoods_classify((String)(ic_release_classify.getSelectedItem()));
         if(pic_dir!=null){
             for (String pic_path:pic_dir
                  ) {
                 select_pic[i++]=pic_path;
             }
         }
-        if (select_pic!=null){
+        if (select_pic.length==pic_dir.size()){
             BmobFile.uploadBatch(select_pic, new UploadBatchListener() {
                 @Override
                 public void onSuccess(List<BmobFile> list, List<String> list1) {
