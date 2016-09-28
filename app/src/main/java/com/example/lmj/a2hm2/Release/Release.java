@@ -1,13 +1,20 @@
 package com.example.lmj.a2hm2.Release;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -16,6 +23,9 @@ import android.widget.Toast;
 
 import com.example.lmj.a2hm2.MainActivity;
 import com.example.lmj.a2hm2.R;
+import com.example.lmj.a2hm2.SpacesItemDecoration;
+import com.example.lmj.a2hm2.initB;
+import com.nostra13.universalimageloader.core.download.ImageDownloader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +39,8 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
     private TextView ic_tb_release_cancel;
     private TextView ic_tb_release_more;
     private TextView ic_release_add_picture;
+    private HorizontalScrollView mScrollView;
+    private RecyclerView mRecyclerView;
     private Spinner ic_release_classify;
     private LinearLayout add_picture_linear;
     private RelativeLayout release_classify;
@@ -48,6 +60,11 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void initView() {
+        mScrollView= (HorizontalScrollView) findViewById(R.id.select_pic_scroll);
+        mRecyclerView= (RecyclerView) findViewById(R.id.select_pic_recycle);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,10));
+        SpacesItemDecoration spacesItemDecoration=new SpacesItemDecoration(10);
+        mRecyclerView.addItemDecoration(spacesItemDecoration);
         ic_tb_release_cancel= (TextView) findViewById(R.id.ic_tb_release_cancel);
         ic_tb_release_more= (TextView) findViewById(R.id.ic_tb_release_more);
         ic_release_add_picture= (TextView) findViewById(R.id.ic_release_add_picture);
@@ -98,9 +115,49 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         if(requestCode==SELECT_PICTURE&&resultCode==RESULT_OK){
           pic_dir=data.getExtras().getStringArrayList("uri");
             Log.i("wfh",pic_dir.size()+"");
+            if (!pic_dir.isEmpty()){
+                mScrollView.setVisibility(View.VISIBLE);
+                mRecyclerView.setAdapter(new Select_pic_adapter(getApplicationContext(),pic_dir));
+            }
         }
     }
 
+    class Select_pic_adapter extends RecyclerView.Adapter<Select_pic_adapter.MyViewHoldaer>{
+
+        private Context mContext;
+        private ArrayList<String> select_uri;
+        private LayoutInflater mInflater;
+        public Select_pic_adapter(Context context, ArrayList<String> select_uri) {
+            mContext = context;
+            this.select_uri = select_uri;
+            mInflater=LayoutInflater.from(context);
+        }
+
+        @Override
+        public MyViewHoldaer onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            MyViewHoldaer holdaer=new MyViewHoldaer(mInflater.inflate(R.layout.select_picture_recycel_item,parent,false));
+            return holdaer;
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHoldaer holder, int position) {
+            new initB().imageLoader.displayImage(ImageDownloader.Scheme.FILE.wrap(select_uri.get(position)),
+                    holder.mpic, new initB().select_picture_options);
+        }
+
+        @Override
+        public int getItemCount() {
+            return select_uri.size();
+        }
+        class MyViewHoldaer extends RecyclerView.ViewHolder {
+             ImageView mpic;
+            public MyViewHoldaer(View itemView) {
+                super(itemView);
+                mpic= (ImageView) itemView.findViewById(R.id.img_view);
+            }
+        }
+    }
     private void IssueData(){
         final String[]  select_pic=new String[pic_dir.size()];
         int i=0;
