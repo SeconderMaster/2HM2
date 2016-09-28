@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.lmj.a2hm2.Community.Community_article;
 import com.example.lmj.a2hm2.Community.Community_comment_ac;
 import com.example.lmj.a2hm2.R;
+import com.example.lmj.a2hm2.Release.ReleaseBean;
 
 import java.util.ArrayList;
 
@@ -23,9 +23,9 @@ import cn.bmob.v3.listener.UpdateListener;
  * Created by lmj on 2016/9/28.
  */
 public class CommunityArticleAdapter extends RecyclerView.Adapter<CommunityArticleAdapter.MyViewHolder> {
-    private ArrayList<Community_article> Community_articleArrayList;
+    private ArrayList<ReleaseBean> Community_articleArrayList;
     private Context mContext;
-    public CommunityArticleAdapter (Context context, ArrayList<Community_article> Community_articleArrayList){
+    public CommunityArticleAdapter (Context context, ArrayList<ReleaseBean> Community_articleArrayList){
         this. mContext=context;
         this. Community_articleArrayList=Community_articleArrayList;
     }
@@ -40,7 +40,7 @@ public class CommunityArticleAdapter extends RecyclerView.Adapter<CommunityArtic
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.community_discovery_item_userName.setText(Community_articleArrayList.get(position).getArticle_name());
         holder.community_discovery_item_time.setText(Community_articleArrayList.get(position).getCreatedAt().substring(11, 19));
-        holder.community_discovery_item_content.setText(Community_articleArrayList.get(position).getArticle_title());
+        holder.community_discovery_item_content.setText(Community_articleArrayList.get(position).getGoodS_title());
 //        holder.community_discovery_item_position.setText(Community_articleArrayList.get(position).getProductPlace());
         holder.community_discovery_item__comments_num.setText(Community_articleArrayList.get(position).getComment_num());
         holder.community_discovery_item_thumb_up_num.setText(Community_articleArrayList.get(position).getThumb_num());

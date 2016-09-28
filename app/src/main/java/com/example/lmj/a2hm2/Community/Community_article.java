@@ -11,8 +11,6 @@ import cn.bmob.v3.datatype.BmobFile;
 public class Community_article extends BmobObject {
     private My_User article;
     private String article_name;
-
-
     private BmobFile pic1;
     private BmobFile pic2;
     private BmobFile pic3;

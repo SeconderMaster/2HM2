@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:textSize="16dp"
-            android:hint="描述一下你的位置"
+            android:hint="描述一下你的闲置"
             android:textColorHint="#eeeeee"
             android:background="@null"/>
         <LinearLayout
@@ -120,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="价格"/>
         <EditText
+            android:inputType="number"
             android:id="@+id/goods_pri"
             android:layout_toRightOf="@+id/text_value"
             android:layout_marginLeft="30dp"

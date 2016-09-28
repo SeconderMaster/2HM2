@@ -1,5 +1,6 @@
 package com.example.lmj.a2hm2.Community;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,11 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lmj.a2hm2.Msg.bb_Msg;
 import com.example.lmj.a2hm2.R;
+import com.example.lmj.a2hm2.Release.Release;
 import com.example.lmj.a2hm2.TabPagerAdapter;
 
 import java.util.ArrayList;
@@ -27,11 +30,11 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
     private static TextView tb_tv_comment_my;
     private static View tb_comment_discovery_view;
     private static View tb_comment_my_view;
+    private Button btn_community_add;
     private View community_fragment;
     public ArrayList<Fragment> Community_fragmentList;
     private ViewPager community_viewPager;
-
-
+    private static final int COMMUNIT_ADD=1111;
 
     @Nullable
     @Override
@@ -55,7 +58,7 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
         tb_comment_discovery_view=(View) community_fragment.findViewById(R.id.tb_comment_discovery_view);
         tb_comment_my_view=(View)community_fragment.findViewById(R.id.tb_comment_my_view);
         community_viewPager=(ViewPager) community_fragment.findViewById(R.id.community_viewPager);
-
+        btn_community_add= (Button) community_fragment.findViewById(R.id.community_add);
 
         Community_fragmentList=new ArrayList<Fragment>();
         Community_fragmentList.add(new bb_Community());
@@ -63,7 +66,7 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
 
         tb_comment_discovery.setOnClickListener(this);
         tb_comment_my.setOnClickListener(this);
-
+        btn_community_add.setOnClickListener(this);
         community_viewPager.setAdapter(new TabPagerAdapter(getActivity().getSupportFragmentManager(), Community_fragmentList));
         community_viewPager.setOnPageChangeListener(this);
         setTabSelection(0);
@@ -116,6 +119,10 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
             case R.id.tb_comment_my:
                 setTabSelection(1);
                 community_viewPager.setCurrentItem(1);
+                break;
+            case R.id.community_add:
+                Intent it =new Intent(getActivity(), Release.class);
+                startActivityForResult(it,COMMUNIT_ADD);
                 break;
         }
     }

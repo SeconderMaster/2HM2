@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.lmj.a2hm2.Adapter.CommunityArticleAdapter;
 import com.example.lmj.a2hm2.R;
+import com.example.lmj.a2hm2.Release.ReleaseBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import cn.bmob.v3.listener.FindListener;
 public class bb_Community extends Fragment{
     private TextView community_add_btn;
     private View ic_community_add;
-    private ArrayList<Community_article> marticle=new ArrayList<>();
+    private ArrayList<ReleaseBean> marticle=new ArrayList<>();
     private CommunityArticleAdapter madapter;
     private RecyclerView community_view;
     @Nullable
@@ -59,10 +60,10 @@ public class bb_Community extends Fragment{
 
         @Override
         protected Void doInBackground(Void... params) {
-            BmobQuery<Community_article> query=new BmobQuery<Community_article>();
-            query.findObjects(new FindListener<Community_article>() {
+            BmobQuery<ReleaseBean> query=new BmobQuery<ReleaseBean>();
+            query.findObjects(new FindListener<ReleaseBean>() {
                 @Override
-                public void done(List<Community_article> list, BmobException e) {
+                public void done(List<ReleaseBean> list, BmobException e) {
                     if(e==null){
                         if (list != null) {
                             marticle.clear();
@@ -71,7 +72,7 @@ public class bb_Community extends Fragment{
                         madapter.notifyDataSetChanged();
                     }
                     else {
-                        Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                        Log.i("wfh","失败："+e.getMessage()+","+e.getErrorCode());
                     }
                 }
             });
