@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lmj.a2hm2.MainActivity;
+import com.example.lmj.a2hm2.My.My_User;
 import com.example.lmj.a2hm2.R;
 import com.example.lmj.a2hm2.SpacesItemDecoration;
 import com.example.lmj.a2hm2.initB;
@@ -30,6 +31,7 @@ import com.nostra13.universalimageloader.core.download.ImageDownloader;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -49,7 +51,7 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
     private EditText mGoods_des;
     private EditText mGoods_pri;
     private Button mGoods_commit;
-
+    private My_User userinfo;
     private static final int SELECT_PICTURE=1001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,16 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         initView();
 
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        userinfo= BmobUser.getCurrentUser(My_User.class);
+        if(userinfo !=null){
+            mGoods_commit.setEnabled(true);
+        }else {
+            mGoods_commit.setEnabled(false);
+        }
+    }
     private void initView() {
         mScrollView= (HorizontalScrollView) findViewById(R.id.select_pic_scroll);
         mRecyclerView= (RecyclerView) findViewById(R.id.select_pic_recycle);
@@ -93,6 +104,7 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.goods_commit:
                 IssueData();
+
                 break;
             case R.id.ic_tb_release_cancel:
                 startActivity(new Intent(Release.this, MainActivity.class));
@@ -165,7 +177,11 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         mReleaseBean.setGoodS_title(mGoods_title.getText().toString());
         mReleaseBean.setGoods_des(mGoods_des.getText().toString());
         mReleaseBean.setGoods_pri(mGoods_pri.getText().toString());
-        mReleaseBean.setGoods_classify((String)(ic_release_classify.getSelectedItem()));
+        mReleaseBean.setGoods_classify((String) (ic_release_classify.getSelectedItem()));
+        mReleaseBean.setArticle(userinfo);
+        mReleaseBean.setArticle_name(userinfo.getUsername());
+        mReleaseBean.setThumb_num("0");
+        mReleaseBean.setComment_num("0");
         if(pic_dir!=null){
             for (String pic_path:pic_dir
                  ) {
@@ -178,12 +194,14 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
                 public void onSuccess(List<BmobFile> list, List<String> list1) {
                     if (list!=null) {
                         if (!list.isEmpty()&&list.size()==pic_dir.size()) {
-                            mReleaseBean.setSelect_pics(list);
+                            mReleaseBean.addAllUnique("select_pics",list);
                             mReleaseBean.save(new SaveListener<String>() {
                                 @Override
                                 public void done(String s, BmobException e) {
                                     if (e == null) {
-                                        Toast.makeText(getApplicationContext(), "下载成功", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                                        setResult(RESULT_OK);
+                                        finish();
                                     } else {
                                         Log.i("wfh", e.getErrorCode() + "," + e.getMessage());
                                     }
