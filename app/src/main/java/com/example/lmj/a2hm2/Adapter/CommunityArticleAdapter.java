@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lmj.a2hm2.Community.Community_comment_ac;
+import com.example.lmj.a2hm2.MyView.MyGridView;
 import com.example.lmj.a2hm2.R;
 import com.example.lmj.a2hm2.Release.ReleaseBean;
 
@@ -44,6 +45,8 @@ public class CommunityArticleAdapter extends RecyclerView.Adapter<CommunityArtic
 //        holder.community_discovery_item_position.setText(Community_articleArrayList.get(position).getProductPlace());
         holder.community_discovery_item__comments_num.setText(Community_articleArrayList.get(position).getComment_num());
         holder.community_discovery_item_thumb_up_num.setText(Community_articleArrayList.get(position).getThumb_num());
+        holder.community_discovery_item_download_pic.setAdapter(new Community_pic_gridviewAdapter(holder.community_discovery_item_download_pic,
+                mContext,Community_articleArrayList.get(position).getSelect_pics()));
         holder.community_discovery_item_thumb_up_num.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,8 +87,10 @@ public class CommunityArticleAdapter extends RecyclerView.Adapter<CommunityArtic
                 community_discovery_item_content,community_discovery_item_position,
                 community_discovery_item__comments_num,community_discovery_item_thumb_up_num;
         ImageView community_discovery_item_userHead;
+        MyGridView community_discovery_item_download_pic;
         public MyViewHolder(View view) {
             super(view);
+            community_discovery_item_download_pic= (MyGridView) view.findViewById(R.id.community_goods_download_pic);
             community_discovery_item_userHead= (ImageView) view.findViewById(R.id.community_discovery_item_userHead);
             community_discovery_item_userName= (TextView) view.findViewById(R.id.community_discovery_item_userName);
             community_discovery_item_time= (TextView) view.findViewById(R.id.community_discovery_item_time);
