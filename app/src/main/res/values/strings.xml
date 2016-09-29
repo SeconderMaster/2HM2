@@ -43,6 +43,8 @@
     <string name="ic_edit_data_ID_card_verified">&#xe647;</string>
     <string name="ic_my_shipping_address_select">&#xe647;</string>
     <string name="ic_community_add">&#xe748;</string>
+    <string name="ic_mag_leave_msg">&#xe6bc;</string>
+    <string name="ic_msg_system_messages">&#xe66b;</string>
 
 
 </resources>

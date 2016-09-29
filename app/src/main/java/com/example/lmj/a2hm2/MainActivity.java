@@ -31,7 +31,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public ArrayList<Fragment> fragmentList;
     private LinearLayout bb_myhome;
     private LinearLayout bb_community;
-    private LinearLayout bb_release;
+//    private LinearLayout bb_release;
     private LinearLayout bb_msg;
     private LinearLayout bb_my;
     TextView bb_myhome_text;
@@ -78,13 +78,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         bb_myhome= (LinearLayout) findViewById(R.id.bb_myhome);
         bb_community= (LinearLayout) findViewById(R.id.bb_community);
-        bb_release= (LinearLayout) findViewById(R.id.bb_release);
+//        bb_release= (LinearLayout) findViewById(R.id.bb_release);
         bb_msg= (LinearLayout) findViewById(R.id.bb_msg);
         bb_my= (LinearLayout) findViewById(R.id.bb_my);
 
         bb_myhome.setOnClickListener(this);
+
+        ic_release.setOnClickListener(this);
         bb_community.setOnClickListener(this);
-        bb_release.setOnClickListener(this);
+//        bb_release.setOnClickListener(this);
         bb_msg.setOnClickListener(this);
         bb_my.setOnClickListener(this);
 
@@ -101,7 +103,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 ic_community.setTextColor(Color.parseColor("#FEDB43"));
                 break;
             case 2:
-                ic_release.setTextColor(Color.parseColor("#FEDB43"));
+//                ic_release.setTextColor(Color.parseColor("#FEDB43"));
                 break;
             case 3:
                 ic_msg.setTextColor(Color.parseColor("#FEDB43"));
@@ -124,7 +126,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 setTabSelection(1);
                 viewPager.setCurrentItem(1);
                 break;
-            case R.id.bb_release:
+            case R.id.ic_release:
                 startActivity(new Intent(MainActivity.this, Release.class));
 //                setTabSelection(2);
 //                viewPager.setCurrentItem(2);
@@ -159,7 +161,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private static void clearSelection(){
         ic_myhome.setTextColor(Color.parseColor("#767676"));
         ic_community.setTextColor(Color.parseColor("#767676"));
-        ic_release.setTextColor(Color.parseColor("#767676"));
+//        ic_release.setTextColor(Color.parseColor("#767676"));
         ic_msg.setTextColor(Color.parseColor("#767676"));
         ic_my.setTextColor(Color.parseColor("#767676"));
     }

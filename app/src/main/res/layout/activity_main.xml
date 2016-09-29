@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.lmj.a2hm2.MainActivity">
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
     </android.support.v4.view.ViewPager>
     <LinearLayout
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -59,25 +57,12 @@
                 android:textSize="12dp"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/bb_release"
             android:gravity="center|bottom"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingBottom="8dp"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:id="@+id/ic_release"
-                android:text="@string/ic_release"/>
-            <TextView
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="发布"
-                android:textSize="12dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/bb_msg"
@@ -120,4 +105,26 @@
                 android:textSize="12dp"/>
         </LinearLayout>
     </LinearLayout>//底部导航
+    <LinearLayout
+    android:layout_gravity="center|bottom"
+    android:gravity="center|bottom"
+    android:id="@+id/bb_release"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:id="@+id/ic_release"
+        android:textColor="#FEDB43"
+        android:text="@string/ic_release"/>
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发布"
+        android:textSize="12dp"/>
 </LinearLayout>
+</FrameLayout>

@@ -47,6 +47,12 @@ public class bb_MyHome extends Fragment implements View.OnClickListener,ViewPage
         return v_myhome;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initView();
+    }
+
     private void initBanner() {
         banner= (Banner) v_myhome.findViewById(R.id.banner_myhome);
         String[] images = getResources().getStringArray(R.array.url);
