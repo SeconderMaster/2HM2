@@ -19,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lmj.a2hm2.MainActivity;
 import com.example.lmj.a2hm2.My.My_User;
@@ -52,11 +51,15 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
     private EditText mGoods_pri;
     private Button mGoods_commit;
     private My_User userinfo;
+    private boolean IsCommunity=false;
     private static final int SELECT_PICTURE=1001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_release);
+        Intent it=getIntent();
+        if (it!=null)
+        IsCommunity=it.getExtras().getBoolean("iscommunity");
         initView();
 
     }
@@ -182,6 +185,11 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
         mReleaseBean.setArticle_name(userinfo.getUsername());
         mReleaseBean.setThumb_num("0");
         mReleaseBean.setComment_num("0");
+        if (IsCommunity){
+            mReleaseBean.setIsCommunity("true");
+        }else {
+            mReleaseBean.setIsCommunity("false");
+        }
         if(pic_dir!=null){
             for (String pic_path:pic_dir
                  ) {
@@ -199,9 +207,8 @@ public class Release extends AppCompatActivity implements View.OnClickListener {
                                 @Override
                                 public void done(String s, BmobException e) {
                                     if (e == null) {
-                                        Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_SHORT).show();
                                         setResult(RESULT_OK);
-                                        finish();
+                                       finish();
                                     } else {
                                         Log.i("wfh", e.getErrorCode() + "," + e.getMessage());
                                     }

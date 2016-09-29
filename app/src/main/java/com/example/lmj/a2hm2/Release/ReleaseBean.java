@@ -14,6 +14,16 @@ import cn.bmob.v3.datatype.BmobFile;
 public class ReleaseBean extends BmobObject {
     private String mGoodS_title;
     private My_User article;
+    private String isCommunity;
+
+    public String getIsCommunity() {
+        return isCommunity;
+    }
+
+    public void setIsCommunity(String isCommunity) {
+        this.isCommunity = isCommunity;
+    }
+
     private String article_name;
     private String comment_num;
     private String thumb_num;

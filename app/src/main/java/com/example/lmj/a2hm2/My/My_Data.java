@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lmj.a2hm2.Community.bb_Community;
 import com.example.lmj.a2hm2.R;
 import com.example.lmj.a2hm2.TabPagerAdapter;
 
@@ -49,22 +50,19 @@ public class My_Data extends FragmentActivity implements ViewPager.OnPageChangeL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__data);
         initView();
-        my_data_viewPage= (ViewPager) findViewById(R.id.my_data_viewPage);
-        my_data_viewPage.setAdapter(new TabPagerAdapter(getSupportFragmentManager(), my_data_fragmentList));
-        my_data_viewPage.setOnPageChangeListener(this);
         setTabSelection(0);
         my_data_viewPage.setCurrentItem(0);
     }
 
     private void initView() {
         my_data_fragmentList = new ArrayList<Fragment>();
-        my_data_fragmentList.add(new My_Data_My());
+        my_data_fragmentList.add(new bb_Community(true));
         my_data_fragmentList.add(new My_Data_Release());
         my_data_fragmentList.add(new My_Data_Collect());
         my_data_fragmentList.add(new My_Data_Evaluate());
-
-
-
+        my_data_viewPage= (ViewPager) findViewById(R.id.my_data_viewPage);
+        my_data_viewPage.setAdapter(new TabPagerAdapter(getSupportFragmentManager(), my_data_fragmentList));
+        my_data_viewPage.setOnPageChangeListener(this);
         ic_my_data_back= (TextView) findViewById(R.id.ic_my_data_back);
         ic_my_data_share= (TextView) findViewById(R.id.ic_my_data_share);
         ic_my_data_QR_Code= (TextView) findViewById(R.id.ic_my_data_QR_Code);
