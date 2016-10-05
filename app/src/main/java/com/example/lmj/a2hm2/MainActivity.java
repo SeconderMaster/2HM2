@@ -127,7 +127,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.ic_release:
-                startActivity(new Intent(MainActivity.this, Release.class));
+                Intent it=new Intent(MainActivity.this, Release.class);
+                it.putExtra("iscommunity",false);
+                startActivity(it);
 //                setTabSelection(2);
 //                viewPager.setCurrentItem(2);
                 break;

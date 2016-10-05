@@ -41,6 +41,7 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         community_fragment = inflater.inflate(R.layout.bbb, container, false);
         initView();
+        community_viewPager.setAdapter(new TabPagerAdapter(getActivity().getSupportFragmentManager(), Community_fragmentList));
         return community_fragment;
     }
 
@@ -61,13 +62,13 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
         btn_community_add= (Button) community_fragment.findViewById(R.id.community_add);
 
         Community_fragmentList=new ArrayList<Fragment>();
-        Community_fragmentList.add(new bb_Community());
+        Community_fragmentList.add(new bb_Community(false));
         Community_fragmentList.add(new bb_Msg());
 
         tb_comment_discovery.setOnClickListener(this);
         tb_comment_my.setOnClickListener(this);
         btn_community_add.setOnClickListener(this);
-        community_viewPager.setAdapter(new TabPagerAdapter(getActivity().getSupportFragmentManager(), Community_fragmentList));
+
         community_viewPager.setOnPageChangeListener(this);
         setTabSelection(0);
         community_viewPager.setCurrentItem(0);
@@ -122,6 +123,7 @@ public class bbb_Community extends Fragment implements ViewPager.OnPageChangeLis
                 break;
             case R.id.community_add:
                 Intent it =new Intent(getActivity(), Release.class);
+                it.putExtra("iscommunity",true);
                 startActivityForResult(it,COMMUNIT_ADD);
                 break;
         }
