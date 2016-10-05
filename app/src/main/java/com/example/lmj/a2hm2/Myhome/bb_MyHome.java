@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.lmj.a2hm2.R;
 import com.example.lmj.a2hm2.TabPagerAdapter;
-import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 
@@ -29,7 +28,7 @@ public class bb_MyHome extends Fragment implements View.OnClickListener,ViewPage
     private static TextView tv_my_home_fresh;
     private static TextView tv_my_home_la;
     private TextView tb_search;
-    private Banner banner;
+//    private Banner banner;
     private RelativeLayout my_home_fresh;
     private RelativeLayout my_home_la;
     private static View my_home_fresh_view;
@@ -41,7 +40,7 @@ public class bb_MyHome extends Fragment implements View.OnClickListener,ViewPage
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v_myhome=inflater.inflate(R.layout.myhome_fragment,container,false);
         initView();
-        initBanner();
+//        initBanner();
         setTabSelection(0);
         my_home_viewPager.setCurrentItem(0);
         return v_myhome;
@@ -52,13 +51,13 @@ public class bb_MyHome extends Fragment implements View.OnClickListener,ViewPage
         super.onResume();
         initView();
     }
+//
+//    private void initBanner() {
+//        banner= (Banner) v_myhome.findViewById(R.id.banner_myhome);
+//        String[] images = getResources().getStringArray(R.array.url);
+//        banner.setImages(images);
 
-    private void initBanner() {
-        banner= (Banner) v_myhome.findViewById(R.id.banner_myhome);
-        String[] images = getResources().getStringArray(R.array.url);
-        banner.setImages(images);
-
-    }
+//    }
 
     private void initView() {
         tb_scan= (TextView) v_myhome.findViewById(R.id.tb_scan);

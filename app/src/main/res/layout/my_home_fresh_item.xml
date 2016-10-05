@@ -5,60 +5,69 @@
     android:layout_marginBottom="15dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/my_home_item_userHead"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:src="@drawable/user_head"/>
-    <TextView
-        android:id="@+id/my_home_item_userName"
-        android:layout_toRightOf="@+id/my_home_item_userHead"
-        android:textColor="#333333"
-        android:textSize="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我喜欢"/>
-    <TextView
-        android:id="@+id/my_home_item_time"
-        android:layout_alignBottom="@+id/my_home_item_userHead"
-        android:layout_toRightOf="@+id/my_home_item_userHead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4小时前"/>
-    <TextView
-        android:id="@+id/my_home_item_value"
-        android:textSize="18dp"
-        android:textColor="#ff4444"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="￥3000"/>
-    <HorizontalScrollView
-        android:id="@+id/my_home_item_imageHorizontalScrollView"
-        android:layout_below="@+id/my_home_item_userHead"
+    <LinearLayout
+        android:id="@+id/my_home_fresh_item_detailed"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.example.lmj.a2hm2.MyView.MyGridView
-                android:id="@+id/my_home_item_goods_download_pic"
-                android:numColumns="auto_fit"
-                android:columnWidth="90dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/my_home_item_userHead"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/user_head"/>
+            <TextView
+                android:id="@+id/my_home_item_userName"
+                android:layout_toRightOf="@+id/my_home_item_userHead"
+                android:textColor="#333333"
+                android:textSize="16dp"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我喜欢"/>
+            <TextView
+                android:id="@+id/my_home_item_time"
+                android:layout_alignBottom="@+id/my_home_item_userHead"
+                android:layout_toRightOf="@+id/my_home_item_userHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4小时前"/>
+            <TextView
+                android:id="@+id/my_home_item_value"
+                android:textSize="18dp"
+                android:textColor="#ff4444"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥3000"/>
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            </com.example.lmj.a2hm2.MyView.MyGridView>
-        </LinearLayout>
-    </HorizontalScrollView>
-    <TextView
-        android:id="@+id/my_home_item_content"
-        android:layout_below="@+id/my_home_item_imageHorizontalScrollView"
-        android:text="水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 "
-        android:textColor="#333333"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+                <com.example.lmj.a2hm2.MyView.MyGridView
+                    android:id="@+id/my_home_item_goods_download_pic"
+                    android:numColumns="auto_fit"
+                    android:columnWidth="90dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                </com.example.lmj.a2hm2.MyView.MyGridView>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/my_home_item_content"
+            android:text="水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 水彩书签手绘 宠物 狗狗 海濑 "
+            android:textColor="#333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <RelativeLayout
-        android:layout_below="@+id/my_home_item_content"
+        android:layout_below="@+id/my_home_fresh_item_detailed"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="40dp">

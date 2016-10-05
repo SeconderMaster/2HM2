@@ -1,12 +1,14 @@
 package com.example.lmj.a2hm2.Myhome;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lmj.a2hm2.Adapter.Community_pic_gridviewAdapter;
@@ -73,6 +75,15 @@ public class MyHomeAdapter extends RecyclerView.Adapter<MyHomeAdapter.MyViewHold
 //                mContext.startActivity(it);
 //            }
 //        });
+        holder.my_home_fresh_item_detailed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("123456");
+                Intent i=new Intent(mContext,Goods_Item.class);
+                i.putExtra("good_objectId",releaseBeanArrayList.get(position).getObjectId());
+                mContext.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -88,6 +99,7 @@ public class MyHomeAdapter extends RecyclerView.Adapter<MyHomeAdapter.MyViewHold
                 my_home_item__comments_num,my_home_item_thumb_up_num;
         ImageView my_home_item_userHead;
         MyGridView my_home_item_goods_download_pic;
+        LinearLayout my_home_fresh_item_detailed;
         public MyViewHolder(View view) {
             super(view);
             my_home_item_goods_download_pic= (MyGridView) view.findViewById(R.id.my_home_item_goods_download_pic);
@@ -99,6 +111,7 @@ public class MyHomeAdapter extends RecyclerView.Adapter<MyHomeAdapter.MyViewHold
             my_home_item_position= (TextView) view.findViewById(R.id.my_home_item_position);
             my_home_item__comments_num= (TextView) view.findViewById(R.id.my_home_item__comments_num);
             my_home_item_thumb_up_num= (TextView) view.findViewById(R.id.my_home_item_thumb_up_num);
+            my_home_fresh_item_detailed= (LinearLayout) view.findViewById(R.id.my_home_fresh_item_detailed);
         }
     }
 }

@@ -44,14 +44,17 @@
         <activity android:name=".Release.Select_Picture" />
         <activity android:name=".All_Uri" />
         <activity android:name=".My.My_Data" />
-        <activity android:name=".My.Edit_Data" android:launchMode="singleTask"/>
+        <activity
+            android:name=".My.Edit_Data"
+            android:launchMode="singleTask" />
         <activity android:name=".My.My_shippingAddress" />
         <activity android:name=".My.Add_My_ShippingAddress_Province" />
         <activity android:name=".My.Add_My_ShippingAddress_City" />
         <activity android:name=".My.Add_My_ShippingAddress_Other" />
-        <activity android:name=".My.My_Shipping_Address_Edit"></activity>
-        <activity android:name=".Release.Release_essary"/>
-        <activity android:name=".Community.Community_comment_ac"/>
+        <activity android:name=".My.My_Shipping_Address_Edit" />
+        <activity android:name=".Release.Release_essary" />
+        <activity android:name=".Community.Community_comment_ac" />
+        <activity android:name=".Myhome.Goods_Item"></activity>
     </application>
 
 </manifest>
